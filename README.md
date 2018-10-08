@@ -4,11 +4,13 @@ For this project, we will be hitting The Star Wars API to tap into a “black ho
 
 ### Project Information
 [Origin](http://frontend.turing.io/projects/swapi-box.html)
+
 [Repo](https://github.com/marcusp619/swapibox)
 
 ### Project Collaborators
 
 *Mark Pearyer*  -- [Github](https://github.com/marcusp619)
+
 *Tanjie McMeans* -- [Github](https://github.com/TMcMeans) 
 
 ### Project Wireframe

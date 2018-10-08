@@ -12,4 +12,4 @@ For this project, we will be hitting The Star Wars API to tap into a “black ho
 *Tanjie McMeans* -- [Github](https://github.com/TMcMeans) 
 
 ### Project Wireframe
-![Wireframe](/SWAPIBox/SwapiBox-Wireframe.png "Logo Title Text 1")
+![Wireframe Img](https://github.com/marcusp619/swapibox/blob/Update-Readme/SwapiBox-Wireframe%20.png "Logo Title Text 1")

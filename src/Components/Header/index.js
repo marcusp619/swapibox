@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
+import Button from '../Button'
 
 class Header extends Component {
   constructor(props) {
@@ -9,7 +10,10 @@ class Header extends Component {
   render() {
     return(
     <div className="Header">
-      <h2>Header Component</h2>
+      <div className="Header__logo">
+      </div>
+      <Button className="Button__favorite" />
+      <h2 className="Header__subheading">Header Component</h2>
     </div>
     )
   }

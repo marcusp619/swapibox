@@ -6,7 +6,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.Button__favorite {
-  background: red;
-}

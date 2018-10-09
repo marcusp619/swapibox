@@ -5,4 +5,8 @@
   background: peru;
   display: flex;
   justify-content: space-between;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: 70px;
 }

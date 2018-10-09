@@ -12,11 +12,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <aside>
+          <Movie />
+        </aside>
+        <main>
         <Header />
-        <main className="Main">
-          <div className="Aside">
-            <Movie />
-          </div>
           <div className="Button--container">
             <Button title={'People'} />
             <Button title={'Planets'}/>

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './';
+import Button from './'
 import { shallow } from 'enzyme';
 
-describe('App', () => {
+describe('Button', () => {
   it('renders without crashing', () => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<Button />);
 
     expect(wrapper).toMatchSnapshot();
   });

@@ -3,12 +3,12 @@ import './Button.css';
 
 class Button extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
     return(
-      <button className="Button">
+      <button onClick={() => this.props.getCategoryData(this.props.title)} className="Button">
         {this.props.title}
       </button>
     )

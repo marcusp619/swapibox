@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './Movie.css';
 
 class Movie extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render() {
     return(
-      <h3>Movie component</h3>
+      <p>{this.props.randomFilmText}</p>
     )
   }
 }

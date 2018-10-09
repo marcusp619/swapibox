@@ -13,7 +13,7 @@ class Header extends Component {
       <div className="Header__logo">
       </div>
       <h2 className="Header__subheading">Header Component</h2>
-      <Button title={'View Favorites'}/>
+      
     </div>
     )
   }

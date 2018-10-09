@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-const enzyme = require('enzyme');
+import App from './';
+import { shallow } from 'enzyme';
 
-it('renders without crashing', () => {
-  const wrapper = enzyme.shallow(<App />);
+describe('App', () => {
+  it('renders without crashing', () => {
+    const wrapper = shallow(<App />);
 
-   expect(wrapper).toMatchSnapshot();
-});
+    expect(wrapper).toMatchSnapshot();
+  });
+})
+  

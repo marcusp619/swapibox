@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders without crashing 1`] = `
+<div
+  className="Header"
+>
+  <h2>
+    Header Component
+  </h2>
+</div>
+`;

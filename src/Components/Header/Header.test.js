@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header;
-const enzyme = require('enzyme');
+import Header from './'
+import { shallow } from 'enzyme';
 
+describe('Header', () => {
 it('renders without crashing', () => {
-  const wrapper = enzyme.shallow(<Header />);
+  const wrapper = shallow(<Header />);
 
    expect(wrapper).toMatchSnapshot();
-});
+  });
+})
+  

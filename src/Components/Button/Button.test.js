@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from './Button;
-const enzyme = require('enzyme');
+import Button from './'
+import { shallow } from 'enzyme';
 
-it('renders without crashing', () => {
-  const wrapper = enzyme.shallow(<Button />);
+describe('Button', () => {
+  it('renders without crashing', () => {
+    const wrapper = shallow(<Button />);
 
-   expect(wrapper).toMatchSnapshot();
-});
+    expect(wrapper).toMatchSnapshot();
+  });
+})
+  

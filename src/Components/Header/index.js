@@ -12,8 +12,8 @@ class Header extends Component {
     <div className="Header">
       <div className="Header__logo">
       </div>
-      <Button className="Button__favorite" />
       <h2 className="Header__subheading">Header Component</h2>
+      <Button />
     </div>
     )
   }

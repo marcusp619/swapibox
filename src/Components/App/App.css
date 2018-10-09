@@ -3,34 +3,29 @@
 \*------------------------------------*/
 
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 25% 75%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+aside {
+  grid-column: 1;
+  grid-row: 1;
+  background: grey;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+main {
+  grid-column: 2;
+}
+
+.Button--container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: blue;
+  margin: 10px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Button--container button {
+  height: 50px;
+  margin-right: 5px;
 }

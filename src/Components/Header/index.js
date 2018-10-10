@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
 import Button from '../Button'
+import Favorite from '../Favorite'
 
 class Header extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Header extends Component {
       <div className="Header__logo">
       </div>
       <h2 className="Header__subheading">Header Component</h2>
-      
+      <Favorite title={'View Favorites'} />
     </div>
     )
   }

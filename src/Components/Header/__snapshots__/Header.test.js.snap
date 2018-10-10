@@ -4,16 +4,13 @@ exports[`Header renders without crashing 1`] = `
 <div
   className="Header"
 >
-  <div
-    className="Header__logo"
-  />
-  <Button
-    className="Button__favorite"
-  />
   <h2
     className="Header__subheading"
   >
-    Header Component
+    SwapiBox
   </h2>
+  <Favorite
+    title="View Favorites"
+  />
 </div>
 `;

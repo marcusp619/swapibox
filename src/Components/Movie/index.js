@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Movie.css';
 
-class Movie extends Component {
-  constructor(props) {
-    super(props)
-  }
+const Movie = ({ randomFilmText }) => {
+  return (
+    <p>{randomFilmText}</p>
+  );
+};
 
-  render() {
-    return(
-      <p>{this.props.randomFilmText}</p>
-    )
-  }
-}
-
+//Add proptypes 
 export default Movie;

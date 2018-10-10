@@ -14,7 +14,7 @@ body, html{
 }
 
 .star-wars-intro {
-  background: url("img/stars-bg.jpg") center center;
+/*  background: url("img/stars-bg.jpg") center center;*/
   width: 100%;
   height: 100%;
   font-family: "Droid Sans", arial, verdana, sans-serif;
@@ -34,7 +34,7 @@ body, html{
   color: #4ee;
   opacity: 0;
   z-index: 1;
-  text-align: center;
+  text-align: justify;
   -webkit-animation: intro 2s ease-out;
   -moz-animation: intro 2s ease-out;
   -ms-animation: intro 2s ease-out;
@@ -47,10 +47,10 @@ body, html{
   margin-right: auto;
   position: absolute;
   z-index: 3;
-  width: 98%;
-  height: 50em;
+  width: 100%;
+  height: 60em;
   bottom: 0;
-  font-size: 80px;
+  font-size: 50px;
   font-weight: bold;
   text-align: justify;
   overflow: hidden;
@@ -105,9 +105,10 @@ body, html{
 
 .star-wars-intro .main-logo {
   position: absolute;
-  width: 2.6em;
+  width: 2.5em;
   left: 50%;
-  top: 20vh;
+  /*top: 20vh;*/
+  bottom: 60vh;
   font-size: 10em;
   text-align: center;
   margin-left: -1.3em;

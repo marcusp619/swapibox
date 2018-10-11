@@ -7,31 +7,27 @@ import Movie from  '../Movie/';
 class App extends Component {
   constructor() {
     super();
-    this.state ={
-      starwarsData: [],
-      starwarsFilms: [],
-      randomFilmText: ''
+    this.state = {
+      films: [],
+      people: [],
+      vehicles: [],
+      randomFilmText: '',
+      isActive: false
     }
   }
 
-  componentDidMount() {
-    this.getFilmData();
+  async componentDidMount() {
+    await this.getCategoryData('films');
+    this.generateRandomCrawl(this.state.films.results)
   }
 
-  // getCategoryData = async(category) => {
-  //   const url = `https://swapi.co/api/${category.toLowerCase()}/`;
-  //   const response = await fetch(url);
-  //   const starwarsData = await response.json();
-  //   this.setState({ starwarsData });
-  // }
-
-  getFilmData = async() => {
-    const url = 'https://swapi.co/api/films/';
+  getCategoryData = async(category) => {
+    const stateCategory = category;
+    const url = `https://swapi.co/api/${category.toLowerCase()}/`;
     const response = await fetch(url);
-    const starwarsFilms = await response.json();
-
-    this.generateRandomCrawl(starwarsFilms.results)
-    this.setState({ starwarsFilms: starwarsFilms.results });
+    const starwarsData = await response.json();
+    
+    this.setState({ [stateCategory]: starwarsData }); 
   }
 
   generateRandomCrawl = (starwarsFilms) => {
@@ -42,21 +38,16 @@ class App extends Component {
   }
 
   render() {
-    const { randomFilmText }  = this.state;
     return (
       <div className="App">
-        <aside>
-          <Movie randomFilmText={randomFilmText} />
-        </aside>
-        <main>
         <Header />
           <div className="Button--container">
             <Button title={'People'} getCategoryData={this.getCategoryData}/>
             <Button title={'Planets'} getCategoryData={this.getCategoryData}/>
             <Button title={'Vehicles'} getCategoryData={this.getCategoryData}/>
           </div>
-          <div className="CardContainer">
-          </div>   
+        <main>
+          <Movie randomFilmText={this.state.randomFilmText}  />
         </main>
       </div>
     );

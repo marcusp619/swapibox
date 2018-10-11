@@ -11,7 +11,8 @@ class App extends Component {
       films: [],
       people: [],
       vehicles: [],
-      randomFilmText: ''
+      randomFilmText: '',
+      isActive: false
     }
   }
 
@@ -39,18 +40,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <aside>
-          <Movie randomFilmText={this.state.randomFilmText}  />
-        </aside>
-        <main>
         <Header />
           <div className="Button--container">
             <Button title={'People'} getCategoryData={this.getCategoryData}/>
             <Button title={'Planets'} getCategoryData={this.getCategoryData}/>
             <Button title={'Vehicles'} getCategoryData={this.getCategoryData}/>
           </div>
-          <div className="CardContainer">
-          </div>   
+        <main>
+          <Movie randomFilmText={this.state.randomFilmText}  />
         </main>
       </div>
     );

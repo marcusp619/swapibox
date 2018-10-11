@@ -3,9 +3,12 @@ import './Movie.css';
 
 const Movie = ({ randomFilmText }) => {
   return (
-    <p>{randomFilmText}</p>
+    <section class="star-wars Movie">
+      <div class="crawl">
+        <p>{randomFilmText}</p>
+      </div>
+    </section>
   );
 };
 
-//Add proptypes 
 export default Movie;

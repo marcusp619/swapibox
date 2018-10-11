@@ -4,7 +4,9 @@ import Favorite from '../Favorite';
 
 const Header = () => (
   <div className="Header">
-    <h2 className="Header__subheading">SwapiBox</h2>
+    <div>
+      <h2 className="Header__subheading">SwapiBox</h2>
+    </div>
     <Favorite title="View Favorites" />
   </div>
 );

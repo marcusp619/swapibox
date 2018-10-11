@@ -3,6 +3,7 @@ import './App.css';
 import Header from '../Header/';
 import Button from '../Button/';
 import Movie from  '../Movie/';
+import CardsContainer from '../CardsContainer/';
 
 class App extends Component {
   constructor() {
@@ -48,6 +49,7 @@ class App extends Component {
           </div>
         <main>
           <Movie randomFilmText={this.state.randomFilmText}  />
+          <CardsContainer />
         </main>
       </div>
     );

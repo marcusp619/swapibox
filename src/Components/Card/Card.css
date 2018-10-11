@@ -1,0 +1,60 @@
+.card {
+  width: 18rem;
+  border: 2px solid grey;
+  border-radius: 3px;
+  height: 20rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.card-img {
+  background: grey;
+  height: 40%;
+  padding: 5px;
+}
+
+.card-body {
+  padding: 5px;
+}
+
+.card-text {
+  padding: 5px;
+}
+
+.card .star {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: .9em;
+  margin-right: .9em;
+  margin-bottom: 1.2em;
+  border-right: .3em solid transparent;
+  border-bottom: .7em  solid #000;
+  border-left: .3em solid transparent;
+  /* Controlls the size of the stars. */
+  font-size: 15px;
+}
+
+.star:before, .star:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: .6em;
+  left: -1em;
+  border-right: 1em solid transparent;
+  border-bottom: .7em  solid #000;
+  border-left: 1em solid transparent;
+  transform: rotate(-35deg);
+}
+.star:after {
+  transform: rotate(35deg);
+}

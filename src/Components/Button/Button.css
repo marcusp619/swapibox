@@ -10,5 +10,11 @@
   height: 30px;
   width: 150px;
   margin-top: 100px;
-  
+  cursor:pointer;
+}
+
+.Button:hover {
+  background:#801515;
+  color: white;
+  transition:background .3s ease;
 }

@@ -9,9 +9,7 @@ For this project, we will be hitting The Star Wars API to tap into a “black ho
 
 ### Project Collaborators
 
-*Mark Pearyer*  -- [Github](https://github.com/marcusp619)
-
-*Tanjie McMeans* -- [Github](https://github.com/TMcMeans) 
+*Mark Pearyer*  -- [Github](https://github.com/marcusp619) 
 
 ### Project Wireframe
 ![Wireframe Img](https://github.com/marcusp619/swapibox/blob/Update-Readme/SwapiBox-Wireframe%20.png "Logo Title Text 1")

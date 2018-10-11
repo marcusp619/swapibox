@@ -1,5 +1,6 @@
 import React from 'react';
 import './Movie.css';
+import './StarWarsIntro.css'
 
 const Movie = ({ randomFilmText }) => {
   return (

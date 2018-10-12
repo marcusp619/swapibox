@@ -10,7 +10,7 @@ class Card extends Component {
     return (
       <div className="card">
         <div className="card-img">
-          <img src="..." alt="Card image" />
+    
         </div>
         <div className="card-body">
           <h5>Card Title</h5>

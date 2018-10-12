@@ -4,8 +4,8 @@ import './StarWarsIntro.css'
 
 const Movie = ({ randomFilmText }) => {
   return (
-    <section class="star-wars Movie">
-      <div class="crawl">
+    <section className="star-wars Movie">
+      <div className="crawl">
         <p>{randomFilmText}</p>
       </div>
     </section>

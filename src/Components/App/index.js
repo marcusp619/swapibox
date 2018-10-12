@@ -38,6 +38,10 @@ class App extends Component {
     this.setState({ randomFilmText });
   }
 
+  cleanCategoryData(category) {
+
+  }
+
   render() {
     return (
       <div className="App">

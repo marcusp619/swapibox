@@ -1,16 +1,6 @@
 import React from 'react';
 import './Card.css';
 
-// class Card extends Component {
-//   constructor(props) {
-//     super(props)
-//   }
-
-//   render() {
-//     
-//   }
-// }
-
 const Card = ({homeworld, name, species}) => {
   return (
     <div className="card">

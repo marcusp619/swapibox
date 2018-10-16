@@ -27,7 +27,6 @@ class App extends Component {
     const url = `https://swapi.co/api/${stateCategory}/`;
     const response = await fetch(url);
     const starwarsData = await response.json();
-    // this.setState({ [stateCategory]: starwarsData }); 
     await this.cleanCategoryData(stateCategory, starwarsData);
   }
 
@@ -64,6 +63,7 @@ class App extends Component {
       const responses = await this.fetchUrls(person.homeworld, ...person.species)
       const results = await this.responsesJson(responses);
       let mergedResults = {name: person.name, homeworld: await results[0], species: await results[1]};
+      
       return mergedResults; 
     });
     const result = await Promise.all(filteredPeopleData);

@@ -40,7 +40,7 @@ class App extends Component {
   cleanCategoryData = async(category, starwarsData) => {
     switch (category) {
       case 'people':
-      const data = await this.cleanPeopleData(starwarsData);  
+        await this.cleanPeopleData(starwarsData);  
         break;
       case 'films':
         this.cleanFilmData(starwarsData);

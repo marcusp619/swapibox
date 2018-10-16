@@ -18,29 +18,70 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.getCategoryData('films');
-    this.generateRandomCrawl(this.state.films.results)
+    await this.getCategoryData('films');    
+    // await this.generateRandomCrawl(this.state.films.results)
   }
 
   getCategoryData = async(category) => {
-    const stateCategory = category;
-    const url = `https://swapi.co/api/${category.toLowerCase()}/`;
+    const stateCategory = category.toLowerCase();
+    const url = `https://swapi.co/api/${stateCategory}/`;
     const response = await fetch(url);
     const starwarsData = await response.json();
-    
-    this.setState({ [stateCategory]: starwarsData }); 
+    // this.setState({ [stateCategory]: starwarsData }); 
+    await this.cleanCategoryData(stateCategory, starwarsData);
   }
 
-  generateRandomCrawl = (starwarsFilms) => {
+  generateRandomCrawl = starwarsFilms => {
     const randomNumber = Math.floor(Math.random() * Math.floor(starwarsFilms.length))
     const randomFilmText = starwarsFilms[randomNumber].opening_crawl;
     
     this.setState({ randomFilmText });
   }
 
-  cleanCategoryData(category) {
-
+  cleanCategoryData = async(category, starwarsData) => {
+    switch (category) {
+      case 'people':
+      const data = await this.cleanPeopleData(starwarsData);  
+        break;
+      case 'films':
+        this.cleanFilmData(starwarsData);
+        break;
+      default:
+        break;
+    }
+    if (category === 'people') {
+      
+    }
   }
+
+  cleanFilmData = (filmData) => {
+    const films = filmData
+    this.setState({ films });
+  }
+
+  cleanPeopleData = async(peopleData) => {
+    const filteredPeopleData = peopleData.results.map(async(person) => {
+      const responses = await this.fetchUrls(person.homeworld, ...person.species)
+      const results = await this.responsesJson(responses);
+      let mergedResults = {name: person.name, homeworld: await results[0], species: await results[1]};
+      return mergedResults; 
+    });
+    const result = await Promise.all(filteredPeopleData);
+    await this.setState({ people: result })
+  }
+
+  
+  fetchUrls = async(...urlArray) => {
+    const fetchedUrls = [await fetch(urlArray[0]), await fetch(urlArray[1])];
+    return fetchedUrls;
+  }
+
+  responsesJson = async(responses) => {
+    const results = [await responses[0].json(), await responses[1].json()];
+    return results;
+  }
+  
+ 
 
   render() {
     return (
@@ -53,7 +94,7 @@ class App extends Component {
           </div>
         <main>
           <Movie randomFilmText={this.state.randomFilmText}  />
-          <CardsContainer />
+          <CardsContainer people={this.state.people} />
         </main>
       </div>
     );

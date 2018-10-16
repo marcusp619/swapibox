@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Card.css';
 
-class Card extends Component {
-  constructor(props) {
-    super(props)
-  }
+// class Card extends Component {
+//   constructor(props) {
+//     super(props)
+//   }
 
-  render() {
-    return (
-      <div className="card">
-        <div className="card-img">
-    
-        </div>
-        <div className="card-body">
-          <h5>Card Title</h5>
-          <p className="card-text">Some quick example text to build on the card title and make up</p>
-          <i className ="star"></i>
-        </div>
+//   render() {
+//     
+//   }
+// }
+
+const Card = ({homeworld, name, species}) => {
+  return (
+    <div className="card">
+      <div className="card-img">
       </div>
-    )
-  }
-}
+      <div className="card-body">
+        <h5>{name}</h5>
+        <h5>{homeworld.name}</h5>
+        <h5>{species.name}</h5>
+        <h5>{homeworld.population}</h5>
+        <i className="star" />
+      </div>
+    </div>
+  );
+};
 
 export default Card;

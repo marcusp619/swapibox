@@ -49,9 +49,6 @@ class App extends Component {
       default:
         break;
     }
-    if (category === 'people') {
-      
-    }
   }
 
   cleanFilmData = (filmData) => {

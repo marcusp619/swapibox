@@ -10,7 +10,7 @@ const ImgFinder = (name) => {
 };
 
 
-const Card = ({homeworld, name, species}) => {
+const Card = ({ homeworld, name, species}) => {
   const img = ImgFinder(name);
   
 

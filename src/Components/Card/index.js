@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Images from '../../Assets/images/Images';
+import '../../Assets/images/beru-lars.jpg';
 import './Card.css';
 
 const ImgFinder = (name) => {
@@ -11,10 +12,22 @@ const ImgFinder = (name) => {
 
 const Card = ({homeworld, name, species}) => {
   const img = ImgFinder(name);
+  
+
+  const imgStyle = {
+    background: 'no-repeat',
+    backgroundImage: 'url(' + img + ')',
+    backgroundSize: 'cover',
+    height: '40%',
+    width: '278px',
+  };
+
+  console.log(imgStyle);
+
   return (
     <div className="card">
-      <div className="card-img">
-        <img src={img} alt={name} />
+      <div style={imgStyle} className="card-img">
+        
       </div>
       <div className="card-body">
         <h5>{name}</h5>

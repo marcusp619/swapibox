@@ -27,6 +27,7 @@ class App extends Component {
     const url = `https://swapi.co/api/${stateCategory}/`;
     const response = await fetch(url);
     const starwarsData = await response.json();
+    
     await this.cleanCategoryData(stateCategory, starwarsData);
   }
 
@@ -70,7 +71,6 @@ class App extends Component {
     await this.setState({ people: result })
   }
 
-  
   fetchUrls = async(...urlArray) => {
     const fetchedUrls = [await fetch(urlArray[0]), await fetch(urlArray[1])];
     return fetchedUrls;
@@ -81,8 +81,6 @@ class App extends Component {
     return results;
   }
   
- 
-
   render() {
     return (
       <div className="App">

@@ -1,12 +1,23 @@
+const beru = require('./beru-lars.jpg');
+const luke = require('./luke-skywalker.jpg');
+const c3po = require('./c-3Po.jpg');
+const r2d2 = require('./r2-d2.jpg');
+const darth = require('./darth-vader.jpg');
+const leia = require('./leia-organa.jpg');
+const owen = require('./owen-lars.jpg');
+const r5d4 = require('./r5-d4.jpg');
+const biggs = require('./biggs-darklighter.jpg');
+const obi = require('./obi-wan-kenobi.jpg');
+
 module.exports = [
-  { 'Luke Skywalker': '../../Assets/images/luke-skywalker.jpg' },
-  { 'C-3PO': './c-3Po.jpg' },
-  { 'R2-D2': 'src/Assets/images/r2-d2.jpg' },
-  { 'Darth Vader': 'src/Assets/images/darth-vader.jpg' },
-  { 'Leia Organa': 'src/Assets/images/leia-organa.jpg' },
-  { 'Owen Lars': 'src/Assets/images/owen-lars.jpg' },
-  { 'Beru Whitesun lars': 'src/Assets/images/beru-lars.jpg' },
-  { 'R5-D4': 'src/Assets/images/r5-d4.jpg' },
-  { 'Biggs Darklighter': 'src/Assets/images/biggs-darklighter.jpg' },
-  { 'Obi-Wan Kenobi': 'src/Assets/images/obi-wan-kenobi.jpg' },
+  { 'Luke Skywalker': luke },
+  { 'C-3PO': c3po },
+  { 'R2-D2': r2d2 },
+  { 'Darth Vader': darth },
+  { 'Leia Organa': leia },
+  { 'Owen Lars': owen },
+  { 'Beru Whitesun lars': beru },
+  { 'R5-D4': r5d4 },
+  { 'Biggs Darklighter': biggs },
+  { 'Obi-Wan Kenobi': obi },
 ];

@@ -19,7 +19,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.getCategoryData('films');    
-    // await this.generateRandomCrawl(this.state.films.results)
+    await this.generateRandomCrawl(this.state.films.results)
   }
 
   getCategoryData = async(category) => {
@@ -38,7 +38,7 @@ class App extends Component {
     this.setState({ randomFilmText });
   }
 
-  cleanCategoryData = async(category, starwarsData) => {
+  cleanCategoryData = (category, starwarsData) => {
     switch (category) {
       case 'people':
         this.cleanPeopleData(starwarsData);  

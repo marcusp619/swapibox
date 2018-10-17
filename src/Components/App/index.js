@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import * as API from '../API/API.js'
 import Header from '../Header/';
 import Button from '../Button/';
 import Movie from  '../Movie/';
@@ -9,7 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      films: [],
+      film: [],
       people: [],
       vehicles: [],
       randomFilmText: '',
@@ -18,43 +19,39 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.getCategoryData('films');    
-    await this.generateRandomCrawl(this.state.films.results)
+    const film = await API.fetchFilmData();
+    this.setState({ film })
   }
 
-  getCategoryData = async(category) => {
-    const stateCategory = category.toLowerCase();
-    const url = `https://swapi.co/api/${stateCategory}/`;
-    const response = await fetch(url);
-    const starwarsData = await response.json();
+  // getCategoryData = async(category) => {
+  //   const stateCategory = category.toLowerCase();
+  //   const url = `https://swapi.co/api/${stateCategory}/`;
+  //   const response = await fetch(url);
+  //   const starwarsData = await response.json();
     
-    await this.cleanCategoryData(stateCategory, starwarsData);
-  }
+  //   await this.cleanCategoryData(stateCategory, starwarsData);
+  // }
 
-  generateRandomCrawl = starwarsFilms => {
-    const randomNumber = Math.floor(Math.random() * Math.floor(starwarsFilms.length))
-    const randomFilmText = starwarsFilms[randomNumber].opening_crawl;
+  // generateRandomCrawl = starwarsFilms => {
+  //   const randomNumber = Math.floor(Math.random() * Math.floor(starwarsFilms.length))
+  //   const randomFilmText = starwarsFilms[randomNumber].opening_crawl;
     
-    this.setState({ randomFilmText });
-  }
+  //   this.setState({ randomFilmText });
+  // }
 
-  cleanCategoryData = (category, starwarsData) => {
-    switch (category) {
-      case 'people':
-        this.cleanPeopleData(starwarsData);  
-        break;
-      case 'films':
-        this.cleanFilmData(starwarsData);
-        break;
-      default:
-        break;
-    }
-  }
+  // cleanCategoryData = (category, starwarsData) => {
+  //   switch (category) {
+  //     case 'people':
+  //       this.cleanPeopleData(starwarsData);  
+  //       break;
+  //     case 'films':
+  //       this.cleanFilmData(starwarsData);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 
-  cleanFilmData = (filmData) => {
-    const films = filmData
-    this.setState({ films });
-  }
 
   cleanPeopleData = async(peopleData) => {
     const filteredPeopleData = peopleData.results.map(async(person) => {
@@ -88,7 +85,7 @@ class App extends Component {
             <Button title={'Vehicles'} getCategoryData={this.getCategoryData}/>
           </div>
         <main>
-          <Movie randomFilmText={this.state.randomFilmText}  />
+          <Movie film={this.state.film.opening_crawl} />
           <CardsContainer people={this.state.people} />
         </main>
       </div>

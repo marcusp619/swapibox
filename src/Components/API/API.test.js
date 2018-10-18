@@ -59,5 +59,15 @@ describe('API', () => {
       API.fetchPeopleData();
       await expect(window.fetch).toHaveBeenCalledWith(expected);
     })
+
+    it('should call fetch', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve(({
+      status: 200,
+      json: () => Promise.resolve({results: [{}]})
+    })));
+      API.fetchPeopleData();
+      await expect(window.fetch).toHaveBeenCalled();
+    })
+
   }) 
 })

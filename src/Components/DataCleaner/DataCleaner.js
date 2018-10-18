@@ -20,7 +20,8 @@ export const getRandomFilm = filmData => {
 }
 
 export const cleanPeopleData = async peopleData => {
-  const peopleDataPromises = await peopleData.map(async(person) => {
+  try {
+    const peopleDataPromises = await peopleData.map(async(person) => {
     const { name } = person;
     const { homeworld, population } = await API.fetchHomeworldData(person.homeworld);
     const { species } = await API.fetchSpeciesData(...person.species);
@@ -34,7 +35,10 @@ export const cleanPeopleData = async peopleData => {
     return cleanedPeopleData;
   });
   
-  return await Promise.all(peopleDataPromises);
+  return await Promise.all(peopleDataPromises);  
+  } catch {
+    throw Error('There was an error cleaning people data');
+  }
 }
 
 export const cleanHomeworldData = homeworldData => {

@@ -36,14 +36,14 @@ describe('API', () => {
       await expect(window.fetch).toHaveBeenCalledWith(expected);
     })
 
-    it('should catch error if fetch fails', () => {
+    it('should catch error if fetch fails', async () => {
       const expected = Error('There was an error fetching film data');
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         status: 500,
         json: () => Promise.reject()
       }))
 
-      expect(API.fetchFilmData()).rejects.toEqual(expected);
+      await expect(API.fetchFilmData()).rejects.toEqual(expected);
     })
   })
 
@@ -67,6 +67,16 @@ describe('API', () => {
     })));
       API.fetchPeopleData();
       await expect(window.fetch).toHaveBeenCalled();
+    })
+
+    it('should catch error if fetch fails', async () => {
+      const expected = Error('There was an error fetching people data');
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 500,
+        json: () => Promise.reject()
+      }))
+
+      await expect(API.fetchPeopleData()).rejects.toEqual(expected);
     })
 
   }) 

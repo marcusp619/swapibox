@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './';
 import { shallow } from 'enzyme';
 
+let wrapper
 
 describe('App', () => {
   it('renders without crashing', () => {

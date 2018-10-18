@@ -13,8 +13,7 @@ class App extends Component {
       film: [],
       people: [],
       vehicles: [],
-      randomFilmText: '',
-      isActive: false
+      isActive: false,
     }
   }
 

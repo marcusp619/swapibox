@@ -1,5 +1,9 @@
+import React from 'react';
 import * as API from './API';
 
+let mockFilmData; 
+
+let mockCleanFilmData = jest.fn();
 
 describe('API', () => {
   beforeEach(() => {
@@ -9,15 +13,22 @@ describe('API', () => {
     }));
   })
 
-  describe('getCategoryData', async() => {
-    it.skip('should call fetch', async () => {
+  describe('fetchFilmData', () => {
+    it('should call fetch', async () => {
+      API.fetchFilmData();
+      await expect(window.fetch).toHaveBeenCalled();
     })
     
-    it.skip('should update state with fetch data', async() => {
-
+    it('calls fetch with correct params', async () => {
+      //setup
+      const expected = 'https://swapi.co/api/films/';
+      //execution
+      API.fetchFilmData();
+      await expect(window.fetch). toHaveBeenCalledWith(expected);
+      
     })
 
-    it.skip('it logs an error when the fetch fails', () => {
+    it.skip('should return clean data', () => {
 
     })
   })

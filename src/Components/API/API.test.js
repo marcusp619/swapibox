@@ -38,7 +38,7 @@ describe('API', () => {
     })
 
     it('should catch error if fetch fails', () => {
-      const expected = Error('There was an error');
+      const expected = Error('There was an error fetching film data');
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         status: 500,
         json: () => Promise.reject()

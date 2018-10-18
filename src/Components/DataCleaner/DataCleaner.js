@@ -1,3 +1,6 @@
+import * as API from '../API/API.js';
+
+
 export const cleanFilmData = filmData => {
   const filmResults = filmData.results; 
   const randomFilm = getRandomFilm(filmResults);
@@ -14,4 +17,39 @@ export const getRandomFilm = filmData => {
   const randomFilm = filmData[randomNumber];
   
   return randomFilm;
+}
+
+export const cleanPeopleData = async peopleData => {
+  const peopleDataPromises = await peopleData.map(async(person) => {
+    const { name } = person;
+    const { homeworld, population } = await API.fetchHomeworldData(person.homeworld);
+    const { species } = await API.fetchSpeciesData(...person.species);
+    const cleanedPeopleData = {
+      name,
+      homeworld,
+      species,
+      population,
+    };
+    
+    return cleanedPeopleData;
+  });
+  
+  return await Promise.all(peopleDataPromises);
+}
+
+export const cleanHomeworldData = homeworldData => {
+  const cleanedHomeworldData = {
+    homeworld: homeworldData.name,
+    population: homeworldData.population,
+  }
+
+  return cleanedHomeworldData;
+}
+
+export const cleanSpeciesData = speciesData => {
+  const cleanedSpeciesData = {
+    species: speciesData.name,
+  }
+
+  return cleanedSpeciesData;
 }

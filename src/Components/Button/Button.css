@@ -18,3 +18,8 @@
   color: white;
   transition:background .3s ease;
 }
+
+.active {
+  background:#801515;
+  color: white;
+}

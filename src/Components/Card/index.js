@@ -10,7 +10,7 @@ const ImgFinder = (name) => {
 };
 
 
-const Card = ({ homeworld, name, species}) => {
+const Card = ({ homeworld, name, population, species}) => {
   const img = ImgFinder(name);
   
 
@@ -22,18 +22,16 @@ const Card = ({ homeworld, name, species}) => {
     width: '278px',
   };
 
-  console.log(imgStyle);
-
   return (
     <div className="card">
       <div style={imgStyle} className="card-img">
         
       </div>
       <div className="card-body">
-        <h5>{name}</h5>
-        <h5>{homeworld.name}</h5>
-        <h5>{species.name}</h5>
-        <h5>{homeworld.population}</h5>
+        <h5>{ homeworld }</h5>
+        <h5>{ name }</h5>
+        <h5>{ population }</h5>
+        <h5>{ species }</h5>
         <i className="star" />
       </div>
     </div>

@@ -8,19 +8,29 @@ exports[`should match snapshot 1`] = `
   <div
     className="Button--container"
   >
-    <Button
-      title="People"
-    />
-    <Button
-      title="Planets"
-    />
-    <Button
-      title="Vehicles"
-    />
+    <button
+      className="Button"
+      onClick={[Function]}
+    >
+      People
+    </button>
+    <button
+      className="Button"
+      onClick={[Function]}
+    >
+      Planets
+    </button>
+    <button
+      className="Button"
+      onClick={[Function]}
+    >
+      Vehicles
+    </button>
   </div>
   <main>
     <Movie />
     <CardsContainer
+      activeCategory=""
       people={Array []}
     />
   </main>

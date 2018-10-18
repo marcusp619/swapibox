@@ -34,7 +34,6 @@ describe('API', () => {
       //execution
       API.fetchFilmData();
       await expect(window.fetch).toHaveBeenCalledWith(expected);
-      
     })
 
     it('should catch error if fetch fails', () => {
@@ -45,7 +44,20 @@ describe('API', () => {
       }))
 
       expect(API.fetchFilmData()).rejects.toEqual(expected);
-
     })
   })
+
+  describe('fetchPeopleData', () => {
+    it('calls fetch with correct params', async () => {
+      //setup
+      window.fetch = jest.fn().mockImplementation(() => ({
+        status: 200,
+        json: () => Promise.resolve({results: [{}]})
+      }));
+      const expected = 'https://swapi.co/api/people/';
+      //execution
+      API.fetchPeopleData();
+      await expect(window.fetch).toHaveBeenCalledWith(expected);
+    })
+  }) 
 })

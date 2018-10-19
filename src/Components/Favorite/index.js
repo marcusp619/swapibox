@@ -10,9 +10,9 @@ class Favorite extends Component {
     }
   }
 
-  handleClickOutside = () => {
-    this.setState({ listOpen: false});
-  }
+  // handleMouseOutside = () => {
+  //   this.setState({ listOpen: false});
+  // }
 
   toggleList = () => {
     this.setState(prevState => ({

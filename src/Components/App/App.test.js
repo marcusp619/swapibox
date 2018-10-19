@@ -47,6 +47,21 @@ describe('App', () => {
     wrapper.find('.planet-btn').simulate('click');
     expect(wrapper.state()).toEqual(expectedState);
   })
+
+
+  it('should call showVehicles when button is clicked', () => {
+    const expectedState = {
+      activeCategory: 'Vehicles',
+      film: [],
+      isPeopleActive: false,
+      isPlanetsActive: false,
+      isVehiclesActive: true,
+      people: [],
+    }
+
+    wrapper.find('.vehicle-btn').simulate('click');
+    expect(wrapper.state()).toEqual(expectedState);
+  })
 })
   
 

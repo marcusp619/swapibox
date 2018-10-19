@@ -9,6 +9,7 @@ export const cleanFilmData = filmData => {
     title: randomFilm.title,
     release_data: randomFilm.release_date,
   }
+  
   return film;
 }
 

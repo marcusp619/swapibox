@@ -6,13 +6,13 @@ class Favorite extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      listOpen: false
     }
   }
 
-  handleClickOutside = () => {
-    this.setState({ listOpen: false});
-  }
+  // handleMouseOutside = () => {
+  //   this.setState({ listOpen: false});
+  // }
 
   toggleList = () => {
     this.setState(prevState => ({
@@ -24,9 +24,16 @@ class Favorite extends Component {
     return(
       <div className='container'>
         <div className='dropdown'>
-          <div className='dropdown-button'>{this.props.title}</div>
+          <div 
+            onClick={this.toggleList} 
+            className='dropdown-button'
+          >
+            {this.props.title}
+          </div>
           <span className='triangle'>&#9660;</span>
-          <ul className='dropdown-selection'>
+          <ul  
+            className={this.state.listOpen ? 'dropdown-selection active' : 'dropdown-selection'}
+          >
             <li>First</li>
             <li>Second</li>
             <li>Third</li>

@@ -1,53 +1,85 @@
 import React, { Component } from 'react';
 import './App.css';
+import '../Button/Button.css';
+import * as API from '../API/API.js'
 import Header from '../Header/';
-import Button from '../Button/';
 import Movie from  '../Movie/';
+import CardsContainer from '../CardsContainer/';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      films: [],
+      film: [],
       people: [],
-      vehicles: [],
-      randomFilmText: '',
-      isActive: false
+      isPeopleActive: false,
+      isPlanetsActive: false,
+      isVehiclesActive: false,
+      activeCategory: "",
     }
   }
 
   async componentDidMount() {
-    await this.getCategoryData('films');
-    this.generateRandomCrawl(this.state.films.results)
+    const film = await API.fetchFilmData();
+    const people = await API.fetchPeopleData();
+    this.setState({ film, people });
   }
 
-  getCategoryData = async(category) => {
-    const stateCategory = category;
-    const url = `https://swapi.co/api/${category.toLowerCase()}/`;
-    const response = await fetch(url);
-    const starwarsData = await response.json();
-    
-    this.setState({ [stateCategory]: starwarsData }); 
+  showPeople = () => {
+    this.setState({
+      activeCategory: 'People',
+      isPeopleActive: true,
+      isPlanetsActive: false,
+      isVehiclesActive: false,
+    });
   }
 
-  generateRandomCrawl = (starwarsFilms) => {
-    const randomNumber = Math.floor(Math.random() * Math.floor(starwarsFilms.length))
-    const randomFilmText = starwarsFilms[randomNumber].opening_crawl;
-    
-    this.setState({ randomFilmText });
+  showPlanets = () => {
+    this.setState({
+      activeCategory: 'Planets',
+      isPeopleActive: false,
+      isPlanetsActive: true,
+      isVehiclesActive: false,
+    }); 
   }
 
+  showVehicles = () => {
+    this.setState({
+      activeCategory: 'Vehicles',
+      isPeopleActive: false,
+      isPlanetsActive: false,
+      isVehiclesActive: true,
+    }); 
+  }
+
+  
   render() {
     return (
       <div className="App">
         <Header />
           <div className="Button--container">
-            <Button title={'People'} getCategoryData={this.getCategoryData}/>
-            <Button title={'Planets'} getCategoryData={this.getCategoryData}/>
-            <Button title={'Vehicles'} getCategoryData={this.getCategoryData}/>
+            <button 
+              onClick={this.showPeople}
+              className={this.state.isPeopleActive ? 'Button active people-btn' : 'Button people-btn'} 
+            >
+              People
+            </button>
+            <button 
+              className={this.state.isPlanetsActive ? 'Button active planet-btn' : 'Button planet-btn'} 
+              onClick={this.showPlanets}
+            > 
+              Planets
+            </button>
+            <button 
+              className={this.state.isVehiclesActive ? 'Button active vehicle-btn' : 'Button vehicle-btn'} 
+              onClick={this.showVehicles}
+            > 
+              Vehicles
+            </button>
           </div>
         <main>
-          <Movie randomFilmText={this.state.randomFilmText}  />
+          <Movie film={this.state.film.opening_crawl} />
+          <CardsContainer people={this.state.people} activeCategory={this.state.activeCategory} />
         </main>
       </div>
     );

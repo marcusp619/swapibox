@@ -2,11 +2,11 @@ import React from 'react';
 import './Movie.css';
 import './StarWarsIntro.css'
 
-const Movie = ({ randomFilmText }) => {
+const Movie = ({ film }) => {
   return (
-    <section class="star-wars Movie">
-      <div class="crawl">
-        <p>{randomFilmText}</p>
+    <section className="star-wars Movie">
+      <div className="crawl">
+        <p>{ film }</p>
       </div>
     </section>
   );

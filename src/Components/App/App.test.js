@@ -5,17 +5,36 @@ import { shallow } from 'enzyme';
 
 let wrapper
 
-describe('App', () => {
-  it('renders without crashing', () => {
-    const wrapper = shallow(<App />);
-  });
-})
-  
 beforeEach(() => {
   wrapper = shallow(<App />);
 });
 
-it('should match snapshot', () => {
-  expect(wrapper).toMatchSnapshot();
-});
+
+describe('App', () => {
+  it('renders without crashing', () => {
+    const wrapper = shallow(<App />);
+  });
+
+  it('should match snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should call showPeople when button is clicked', () => {
+    const expectedState = {
+      activeCategory: 'People',
+      film: [],
+      isPeopleActive: true,
+      isPlanetsActive: false,
+      isVehiclesActive: false,
+      people: [],
+    }
+
+    wrapper.find('.people-btn').simulate('click');
+    expect(wrapper.state()).toEqual(expectedState);
+  })
+})
+  
+
+
+
 

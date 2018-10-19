@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/';
+import PropTypes from 'prop-types';
 import './CardsContainer.css';
 
 const CardsContainer = ({ activeCategory, people }) => {
@@ -25,5 +26,10 @@ const CardsContainer = ({ activeCategory, people }) => {
     )
   }
 };
+
+CardsContainer.propTypes = {
+  activeCategory: PropTypes.string,
+  people: PropTypes.array,
+}
 
 export default CardsContainer;

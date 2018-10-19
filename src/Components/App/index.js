@@ -60,18 +60,18 @@ class App extends Component {
           <div className="Button--container">
             <button 
               onClick={this.showPeople}
-              className={this.state.isPeopleActive ? 'Button active' : 'Button'} 
+              className={this.state.isPeopleActive ? 'Button active people-btn' : 'Button people-btn'} 
             >
               People
             </button>
             <button 
-              className={this.state.isPlanetsActive ? 'Button active' : 'Button'} 
+              className={this.state.isPlanetsActive ? 'Button active planet-btn' : 'Button planet-btn'} 
               onClick={this.showPlanets}
             > 
               Planets
             </button>
             <button 
-              className={this.state.isVehiclesActive ? 'Button active' : 'Button'} 
+              className={this.state.isVehiclesActive ? 'Button active vehicle-btn' : 'Button vehicle-btn'} 
               onClick={this.showVehicles}
             > 
               Vehicles

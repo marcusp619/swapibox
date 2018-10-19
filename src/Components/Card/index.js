@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Images from '../../Assets/images/Images';
-import '../../Assets/images/beru-lars.jpg';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 const ImgFinder = (name) => {
@@ -37,5 +37,12 @@ const Card = ({ homeworld, name, population, species}) => {
     </div>
   );
 };
+
+Card.propTypes = {
+  homeworld: PropTypes.string,
+  name: PropTypes.string,
+  population: PropTypes.string,
+  species: PropTypes.string
+}
 
 export default Card;

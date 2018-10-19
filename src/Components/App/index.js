@@ -20,8 +20,10 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    const test = await API.fetchPlanetsData();
     const film = await API.fetchFilmData();
     const people = await API.fetchPeopleData();
+
     this.setState({ film, people });
   }
 

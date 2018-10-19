@@ -50,3 +50,30 @@ export const fetchSpeciesData = async(species) => {
     throw Error('There was an error fetching species data');  
   } 
 }
+
+export const fetchPlanetsData = async() => {
+  try {
+    const url = 'https://swapi.co/api/planets/';
+    const response = await fetch(url);
+    const planetsData = await response.json();
+    const cleanedPlanets = await DataCleaner.cleanPlanetsData(planetsData.results);
+    return cleanedPlanets;
+  } catch(e) {
+    throw Error('There was an error fetching planets data');
+  }
+}
+
+export const fetchResidentsData = async(residents) => {
+  try {
+    const responses = await residents.map(async people => {
+      const response = await fetch(people);
+      const residentsData = await response.json();
+      const cleanedResidents = await DataCleaner.cleanResidentsData(residentsData);
+      return cleanedResidents;
+    });
+    return responses;
+
+  } catch {
+    throw Error('There was an error fetching residents data');
+  }
+}

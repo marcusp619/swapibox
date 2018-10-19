@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './';
+import * as API from '../API/API.js'
 import { shallow } from 'enzyme';
 
 let wrapper
+let mockFilm
+let mockPeople
 
 beforeEach(() => {
   wrapper = shallow(<App />);
@@ -62,6 +65,20 @@ describe('App', () => {
     wrapper.find('.vehicle-btn').simulate('click');
     expect(wrapper.state()).toEqual(expectedState);
   })
+
+  it('componentDidMount updates state', () => {
+    const expectedState = { 
+      film: [],
+      people: [],
+      isPeopleActive: false,
+      isPlanetsActive: false,
+      isVehiclesActive: false,
+      activeCategory: '' 
+    }
+    wrapper.instance().componentDidMount();
+    expect(wrapper.state()).toEqual(expectedState);
+  })
+
 })
   
 

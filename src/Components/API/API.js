@@ -1,4 +1,3 @@
-
 import * as DataCleaner from '../DataCleaner/DataCleaner.js';
 
 export const fetchFilmData = async() => {

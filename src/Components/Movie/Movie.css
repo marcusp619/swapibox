@@ -4,7 +4,7 @@
   overflow-x: hidden;
   /*height: 800px;*/
   /*This sets allows us to transform the text on a 3D plane, and is somewhat a magic number*/
-  perspective: 400px;
+  perspective: 3000px;
   color: #111111;
   font-family: 'Poller One', cursive;
   font-size: 100%;
@@ -17,12 +17,14 @@
 .crawl {
   position: relative;
   /*top: -100px;*/
+  
   transform-origin: 50% 100%;
   /* Adds the crawl animation, which plays for one minute */
   animation: crawl 50s linear;
 }
 
 .Movie {
+  width: 73%;
   height: 400px;
   padding: 0 10em;
 }

@@ -13,6 +13,7 @@ class App extends Component {
       film: [],
       people: [],
       planets: [],
+      vehicles: [],
       isPeopleActive: false,
       isPlanetsActive: false,
       isVehiclesActive: false,
@@ -24,8 +25,8 @@ class App extends Component {
     const planets = await API.fetchPlanetsData();
     const film = await API.fetchFilmData();
     const people = await API.fetchPeopleData();
-
-    this.setState({ film, people, planets });
+    const vehicles = await API.fetchVehiclesData();
+    this.setState({ film, people, planets, vehicles });
   }
 
   showPeople = () => {

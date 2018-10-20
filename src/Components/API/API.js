@@ -9,7 +9,7 @@ export const fetchFilmData = async() => {
     
     return cleanedFilm;
   } catch {
-     throw Error('There was an error fetching film data');
+    throw Error('There was an error fetching film data');
   }
 }
 
@@ -76,5 +76,16 @@ export const fetchResidentsData = async(residents) => {
     return responses;
   } catch {
     throw Error('There was an error fetching residents data');
+  }
+}
+
+export const fetchVehiclesData = async() => {
+  try {
+    const response = await fetch('https://swapi.co/api/vehicles/');
+    const vehiclesData = await response.json();
+    const cleanedVehiclesData = DataCleaner.cleanVehiclesData(vehiclesData.results);
+    return cleanedVehiclesData;
+  } catch {
+    throw Error('There was an error fetching vehiclesw data');
   }
 }

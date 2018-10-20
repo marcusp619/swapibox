@@ -35,8 +35,7 @@ export const fetchHomeworldData = async(homeworld) => {
     return cleanedHomeworld;  
   } catch {
    throw Error('There was an error fetching homeworld data'); 
-  }
-  
+  }  
 }
 
 export const fetchSpeciesData = async(species) => {
@@ -57,6 +56,7 @@ export const fetchPlanetsData = async() => {
     const response = await fetch(url);
     const planetsData = await response.json();
     const cleanedPlanets = await DataCleaner.cleanPlanetsData(planetsData.results);
+    
     return cleanedPlanets;
   } catch(e) {
     throw Error('There was an error fetching planets data');
@@ -66,13 +66,14 @@ export const fetchPlanetsData = async() => {
 export const fetchResidentsData = async(residents) => {
   try {
     const responses = await residents.map(async people => {
-      const response = await fetch(people);
-      const residentsData = await response.json();
-      const cleanedResidents = await DataCleaner.cleanResidentsData(residentsData);
-      return cleanedResidents;
-    });
+    const response = await fetch(people);
+    const residentsData = await response.json();
+    const cleanedResidents = await DataCleaner.cleanResidentsData(residentsData);
+     
+    return cleanedResidents;
+  });
+    
     return responses;
-
   } catch {
     throw Error('There was an error fetching residents data');
   }

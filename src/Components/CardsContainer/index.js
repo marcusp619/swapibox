@@ -3,7 +3,7 @@ import Card from '../Card/';
 import PropTypes from 'prop-types';
 import './CardsContainer.css';
 
-const CardsContainer = ({ activeCategory, people }) => {
+const CardsContainer = ({ activeCategory, people, planets }) => {
   if(!activeCategory) {
     return (
       <section className="cards-container">   
@@ -11,13 +11,20 @@ const CardsContainer = ({ activeCategory, people }) => {
       </section>
     );
   } else if(activeCategory === 'People') {
-    const cards = people.map((person, i) => <Card {...person} key={Date.now() + i} />);
+    const cards = people.map((person, i) => <Card {...person} activeCategory={activeCategory} key={Date.now() + i} />);
     
     return (
       <section className="cards-container">   
         { cards }
       </section>
     );  
+  } else if(activeCategory === 'Planets') {
+    const cards = planets.map((planet, i) => <Card {...planet} activeCategory={activeCategory} key={Date.now() + i} />);  
+    return (      
+      <section className="cards-container">   
+        { cards }
+      </section>
+    );
   } else {
     return (
       <section className="cards-container">   

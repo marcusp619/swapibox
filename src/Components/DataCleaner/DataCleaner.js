@@ -55,8 +55,10 @@ export const cleanPlanetsData = async planetsData => {
         climate,
         residents
       };
+      
       return cleanedPlanetsData
     });
+    
     return await Promise.all(planetsDataPromises);
   } catch {
     throw Error('There was an error cleaning planets data');
@@ -64,10 +66,7 @@ export const cleanPlanetsData = async planetsData => {
 }
 
 export const cleanResidentsData = residentsData => {
-  let arr = []
-  const cleanedResidentsData = {
-    name: residentsData.name
-  }
+  const cleanedResidentsData = [residentsData.name]
 
   return cleanedResidentsData;
 }

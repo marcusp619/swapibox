@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       film: [],
       people: [],
+      planets: [],
       isPeopleActive: false,
       isPlanetsActive: false,
       isVehiclesActive: false,
@@ -20,11 +21,11 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const test = await API.fetchPlanetsData();
+    const planets = await API.fetchPlanetsData();
     const film = await API.fetchFilmData();
     const people = await API.fetchPeopleData();
 
-    this.setState({ film, people });
+    this.setState({ film, people, planets });
   }
 
   showPeople = () => {
@@ -81,7 +82,7 @@ class App extends Component {
           </div>
         <main>
           <Movie film={this.state.film.opening_crawl} />
-          <CardsContainer people={this.state.people} activeCategory={this.state.activeCategory} />
+          <CardsContainer people={this.state.people} planets={this.state.planets} activeCategory={this.state.activeCategory} />
         </main>
       </div>
     );

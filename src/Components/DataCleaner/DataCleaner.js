@@ -42,6 +42,35 @@ export const cleanPeopleData = async peopleData => {
   }
 }
 
+export const cleanPlanetsData = async planetsData => {
+  try {
+    const planetsDataPromises = await planetsData.map(async(planet) => {
+      const { name, terrain, population, climate } = planet;
+      const residentsPromises = await API.fetchResidentsData(planet.residents);
+      const residents = await Promise.all(residentsPromises);
+      const cleanedPlanetsData = {
+        name,
+        terrain,
+        population,
+        climate,
+        residents
+      };
+      
+      return cleanedPlanetsData
+    });
+    
+    return await Promise.all(planetsDataPromises);
+  } catch {
+    throw Error('There was an error cleaning planets data');
+  }
+}
+
+export const cleanResidentsData = residentsData => {
+  const cleanedResidentsData = [residentsData.name]
+
+  return cleanedResidentsData;
+}
+
 export const cleanHomeworldData = homeworldData => {
   const cleanedHomeworldData = {
     homeworld: homeworldData.name,

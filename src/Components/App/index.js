@@ -83,7 +83,12 @@ class App extends Component {
           </div>
         <main>
           <Movie film={this.state.film.opening_crawl} />
-          <CardsContainer people={this.state.people} planets={this.state.planets} activeCategory={this.state.activeCategory} />
+          <CardsContainer 
+            people={this.state.people} 
+            planets={this.state.planets} 
+            vehicles={this.state.vehicles}
+            activeCategory={this.state.activeCategory} 
+          />
         </main>
       </div>
     );

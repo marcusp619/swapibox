@@ -10,6 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      favoriteList: [],
       film: [],
       people: [],
       planets: [],
@@ -72,15 +73,19 @@ class App extends Component {
     }); 
   }
 
-  
+  toggleActiveButton = e => {
+    console.log(e.target.parentNode.firstChild.textContent)
+    e.target.classList.toggle('active-favorite');
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
           <div className="Button--container">
             <button 
-              onClick={this.showPeople}
               className={this.state.isPeopleActive ? 'Button active people-btn' : 'Button people-btn'} 
+              onClick={this.showPeople}
             >
               People
             </button>
@@ -98,12 +103,13 @@ class App extends Component {
             </button>
           </div>
         <main>
-          {/* <Movie film={this.state.film.opening_crawl} /> */}
+          <Movie film={this.state.film.opening_crawl} />
           <CardsContainer 
             people={this.state.people} 
             planets={this.state.planets} 
             vehicles={this.state.vehicles}
             activeCategory={this.state.activeCategory} 
+            toggleActiveButton={this.toggleActiveButton}
           />
         </main>
       </div>

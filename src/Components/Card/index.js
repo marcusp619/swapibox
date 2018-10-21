@@ -1,14 +1,9 @@
 import React from 'react';
-import * as Images from '../../Assets/images/Images';
 import PropTypes from 'prop-types';
+import * as Images from '../../Assets/images/Images';
 import './Card.css';
 
-
-
-
-
-
-const Card = ({ activeCategory, homeworld, name, population, species, terrain, residents, climate, model, passengers, vehicle_class }) => {  
+const Card = ({ activeCategory, homeworld, name, population, species, terrain, residents, climate, model, passengers, vehicle_class, toggleActiveButton }) => {  
   if (activeCategory === 'People') {
     const ImgFinder = (name) => {
       const image = Images.find(person => person[name]);
@@ -29,11 +24,16 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
         <div style={activeCategory === 'People' ? imgStyle : ''} className="card-img">
         </div>
         <div className="card-body">
-          <h5>{ homeworld }</h5>
           <h5>{ name }</h5>
+          <h5>{ homeworld }</h5>
           <h5>{ population }</h5>
           <h5>{ species }</h5>
-          <i className="star" />
+          <button 
+            className="favorite-card"  
+            onClick={toggleActiveButton}
+          >
+            Favorite
+          </button>
         </div>
       </div>
     );
@@ -49,7 +49,12 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
           <h5>{ population }</h5>
           <h5>{ residents }</h5>
           <h5>{ climate } </h5>
-          <i className="star" />
+          <button 
+            className="favorite-card"  
+            onClick={toggleActiveButton}
+          >
+            Favorite
+          </button>
         </div>
       </div>
     );
@@ -64,7 +69,12 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
           <h5>{ model }</h5>
           <h5>{ passengers }</h5>
           <h5>{ vehicle_class }</h5>
-          <i className="star" />
+          <button 
+            className="favorite-card"
+            onClick={toggleActiveButton}
+          >
+            Favorite
+          </button>
         </div>
       </div>
     );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from '../Card';
 import './CardsContainer.css';
 
-const CardsContainer = ({ activeCategory, people, planets, vehicles }) => {
+const CardsContainer = ({ activeCategory, toggleActiveButton, people, planets, vehicles }) => {
   if (!activeCategory) {
     return (
       <section className="cards-container">
@@ -12,7 +12,7 @@ const CardsContainer = ({ activeCategory, people, planets, vehicles }) => {
     );
   }
   if (activeCategory === 'People') {
-    const cards = people.map((person, i) => <Card {...person} activeCategory={activeCategory} key={Date.now() + i} />);
+    const cards = people.map((person, i) => <Card {...person} activeCategory={activeCategory} toggleActiveButton={toggleActiveButton} key={Date.now() + i} />);
     return (
       <section className="cards-container">
         { cards }
@@ -20,7 +20,7 @@ const CardsContainer = ({ activeCategory, people, planets, vehicles }) => {
     );
   }
   if (activeCategory === 'Planets') {
-    const cards = planets.map((planet, i) => <Card {...planet} activeCategory={activeCategory} key={Date.now() + i} />);  
+    const cards = planets.map((planet, i) => <Card {...planet} activeCategory={activeCategory} toggleActiveButton={toggleActiveButton} key={Date.now() + i} />);  
     return (
       <section className="cards-container">
         { cards }
@@ -28,7 +28,7 @@ const CardsContainer = ({ activeCategory, people, planets, vehicles }) => {
     );
   }
   if (activeCategory === 'Vehicles') {
-    const cards = vehicles.map((vehicle, i) => <Card {...vehicle} activeCategory={activeCategory} key={Date.now() + i} />);  
+    const cards = vehicles.map((vehicle, i) => <Card {...vehicle} activeCategory={activeCategory} toggleActiveButton={toggleActiveButton} key={Date.now() + i} />);  
     return (
       <section className="cards-container">
         { cards }

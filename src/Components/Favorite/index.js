@@ -6,7 +6,7 @@ class Favorite extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listOpen: false
+      listOpen: false,
     }
   }
 

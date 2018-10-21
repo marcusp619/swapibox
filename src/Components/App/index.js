@@ -22,11 +22,27 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const planets = await API.fetchPlanetsData();
-    const film = await API.fetchFilmData();
-    const people = await API.fetchPeopleData();
-    const vehicles = await API.fetchVehiclesData();
-    this.setState({ film, people, planets, vehicles });
+    if (localStorage.length > 0) {
+      this.getAllStorageItems();
+    } else {
+      const planets = await API.fetchPlanetsData();
+      const film = await API.fetchFilmData();
+      const people = await API.fetchPeopleData();
+      const vehicles = await API.fetchVehiclesData();
+      
+      this.setState({ film, people, planets, vehicles }) 
+      localStorage.setItem('planets', JSON.stringify(planets));
+      localStorage.setItem('film', JSON.stringify(film));    
+      localStorage.setItem('people', JSON.stringify(people));    
+      localStorage.setItem('vehicles', JSON.stringify(vehicles));    
+    }
+  }
+    
+  getAllStorageItems = () => {
+    const keys = Object.keys(localStorage);
+    keys.forEach(item => {
+      this.setState({ [item]: JSON.parse(localStorage.getItem(item)) })
+    })
   }
 
   showPeople = () => {
@@ -82,7 +98,7 @@ class App extends Component {
             </button>
           </div>
         <main>
-          <Movie film={this.state.film.opening_crawl} />
+          {/* <Movie film={this.state.film.opening_crawl} /> */}
           <CardsContainer 
             people={this.state.people} 
             planets={this.state.planets} 

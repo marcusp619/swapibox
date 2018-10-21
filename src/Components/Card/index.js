@@ -8,8 +8,7 @@ import './Card.css';
 
 
 
-const Card = ({ activeCategory, homeworld, name, population, species, terrain, residents, climate }) => {
-  
+const Card = ({ activeCategory, homeworld, name, population, species, terrain, residents, climate, model, passengers, vehicle_class }) => {  
   if (activeCategory === 'People') {
     const ImgFinder = (name) => {
       const image = Images.find(person => person[name]);
@@ -28,7 +27,6 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
     return (
       <div className="card">
         <div style={activeCategory === 'People' ? imgStyle : ''} className="card-img">
-          
         </div>
         <div className="card-body">
           <h5>{ homeworld }</h5>
@@ -39,11 +37,11 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
         </div>
       </div>
     );
-  } else if (activeCategory === 'Planets') {
+  }
+  if (activeCategory === 'Planets') {
     return (
       <div className="card">
-        <div className="card-img">
-          
+        <div className="card-img">     
         </div>
         <div className="card-body">
           <h5>{ name }</h5>
@@ -56,15 +54,28 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
       </div>
     );
   }
-
-}
-  
+  if (activeCategory === 'Vehicles') {
+    return (
+      <div className="card">
+        <div className="card-img">     
+        </div>
+        <div className="card-body">
+          <h5>{ name }</h5>
+          <h5>{ model }</h5>
+          <h5>{ passengers }</h5>
+          <h5>{ vehicle_class }</h5>
+          <i className="star" />
+        </div>
+      </div>
+    );
+  }
+};
 
 Card.propTypes = {
   homeworld: PropTypes.string,
   name: PropTypes.string,
   population: PropTypes.string,
-  species: PropTypes.string
-}
+  species: PropTypes.string,
+};
 
 export default Card;

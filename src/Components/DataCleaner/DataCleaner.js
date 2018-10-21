@@ -87,3 +87,10 @@ export const cleanSpeciesData = speciesData => {
 
   return cleanedSpeciesData;
 }
+
+export const cleanVehiclesData = vehiclesData => {
+  return vehiclesData.map(vehicle => {
+    const {name, model, passengers, vehicle_class} = vehicle;
+    return {name, model, vehicle_class, passengers};
+  })
+}

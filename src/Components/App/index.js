@@ -13,6 +13,7 @@ class App extends Component {
       film: [],
       people: [],
       planets: [],
+      vehicles: [],
       isPeopleActive: false,
       isPlanetsActive: false,
       isVehiclesActive: false,
@@ -24,8 +25,8 @@ class App extends Component {
     const planets = await API.fetchPlanetsData();
     const film = await API.fetchFilmData();
     const people = await API.fetchPeopleData();
-
-    this.setState({ film, people, planets });
+    const vehicles = await API.fetchVehiclesData();
+    this.setState({ film, people, planets, vehicles });
   }
 
   showPeople = () => {
@@ -82,7 +83,12 @@ class App extends Component {
           </div>
         <main>
           <Movie film={this.state.film.opening_crawl} />
-          <CardsContainer people={this.state.people} planets={this.state.planets} activeCategory={this.state.activeCategory} />
+          <CardsContainer 
+            people={this.state.people} 
+            planets={this.state.planets} 
+            vehicles={this.state.vehicles}
+            activeCategory={this.state.activeCategory} 
+          />
         </main>
       </div>
     );

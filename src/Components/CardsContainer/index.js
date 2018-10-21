@@ -1,42 +1,52 @@
 import React from 'react';
-import Card from '../Card/';
 import PropTypes from 'prop-types';
+import Card from '../Card';
 import './CardsContainer.css';
 
-const CardsContainer = ({ activeCategory, people, planets }) => {
-  if(!activeCategory) {
+const CardsContainer = ({ activeCategory, people, planets, vehicles }) => {
+  if (!activeCategory) {
     return (
-      <section className="cards-container">   
+      <section className="cards-container">
         <h1>Please Select a Category</h1>
       </section>
     );
-  } else if(activeCategory === 'People') {
-    const cards = people.map((person, i) => <Card {...person} activeCategory={activeCategory} key={Date.now() + i} />);
-    
-    return (
-      <section className="cards-container">   
-        { cards }
-      </section>
-    );  
-  } else if(activeCategory === 'Planets') {
-    const cards = planets.map((planet, i) => <Card {...planet} activeCategory={activeCategory} key={Date.now() + i} />);  
-    return (      
-      <section className="cards-container">   
-        { cards }
-      </section>
-    );
-  } else {
-    return (
-      <section className="cards-container">   
-        <h1>Please Select a Category</h1>
-      </section>  
-    )
   }
+  if (activeCategory === 'People') {
+    const cards = people.map((person, i) => <Card {...person} activeCategory={activeCategory} key={Date.now() + i} />);
+    return (
+      <section className="cards-container">
+        { cards }
+      </section>
+    );
+  }
+  if (activeCategory === 'Planets') {
+    const cards = planets.map((planet, i) => <Card {...planet} activeCategory={activeCategory} key={Date.now() + i} />);  
+    return (
+      <section className="cards-container">
+        { cards }
+      </section>
+    );
+  }
+  if (activeCategory === 'Vehicles') {
+    const cards = vehicles.map((vehicle, i) => <Card {...vehicle} activeCategory={activeCategory} key={Date.now() + i} />);  
+    return (
+      <section className="cards-container">
+        { cards }
+      </section>
+    );
+  }
+  return (
+    <section className="cards-container">
+      <h1>Please Select a Category</h1>
+    </section>
+  );
 };
 
 CardsContainer.propTypes = {
   activeCategory: PropTypes.string,
   people: PropTypes.array,
-}
+  planets: PropTypes.array,
+  vehicles: PropTypes.array,
+};
 
 export default CardsContainer;

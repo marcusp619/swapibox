@@ -82,7 +82,7 @@ class App extends Component {
   }
 
   toggleActiveButton = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     e.target.classList.toggle('active-favorite');
     const searchName = e.target.parentNode.firstChild.textContent;
 

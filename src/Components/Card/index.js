@@ -28,12 +28,13 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
           <h5>{ homeworld }</h5>
           <h5>{ population }</h5>
           <h5>{ species }</h5>
-          <input
+          <button
             type="button"
             className="favorite-card"
             onClick={toggleActiveButton}
-            value="Favorite"
-          />
+          >
+            Favorite
+          </button>
         </div>
       </div>
     );

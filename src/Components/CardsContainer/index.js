@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from '../Card';
 import './CardsContainer.css';
 
-const CardsContainer = ({ activeCategory, toggleActiveButton, people, planets, vehicles }) => {
+const CardsContainer = ({ activeCategory, toggleActiveButton, people, planets, vehicles, favoriteList }) => {
   if (!activeCategory) {
     return (
       <section className="cards-container">
@@ -29,6 +29,14 @@ const CardsContainer = ({ activeCategory, toggleActiveButton, people, planets, v
   }
   if (activeCategory === 'Vehicles') {
     const cards = vehicles.map((vehicle, i) => <Card {...vehicle} activeCategory={activeCategory} toggleActiveButton={toggleActiveButton} key={Date.now() + i} />);  
+    return (
+      <section className="cards-container">
+        { cards }
+      </section>
+    );
+  }
+  if (activeCategory === 'Favorites') {
+    const cards = favoriteList.map((item, i) => <Card {...item} activeCategory={activeCategory} key={Date.now() + i} />);
     return (
       <section className="cards-container">
         { cards }

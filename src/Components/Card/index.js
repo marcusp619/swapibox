@@ -79,6 +79,32 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
       </div>
     );
   }
+if (activeCategory === 'Favorites') {
+  return (
+    <div className="card">
+        <div className="card-img">     
+        </div>
+        <div className="card-body">
+          <h5>{ name }</h5>
+          <h5>{ homeworld }</h5>
+          <h5>{ population }</h5>
+          <h5>{ species }</h5>
+          <h5>{ terrain }</h5>
+          <h5>{ residents }</h5>
+          <h5>{ climate } </h5>
+          <h5>{ model }</h5>
+          <h5>{ passengers }</h5>
+          <h5>{ vehicle_class }</h5>
+          <input
+            type="button"
+            className="favorite-card"
+            onClick={toggleActiveButton}
+            value="Favorite"
+          />
+        </div>
+      </div>
+  )
+}  
 };
 
 Card.propTypes = {

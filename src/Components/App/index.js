@@ -111,10 +111,19 @@ class App extends Component {
     })
   }
 
+  showFavorites = () => {
+    this.setState({
+      activeCategory: 'Favorites',
+      isPeopleActive: false,
+      isPlanetsActive: false,
+      isVehiclesActive: false,
+    }); 
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header showFavorites={this.showFavorites} favoriteList={this.state.favoriteList} />
           <div className="Button--container">
             <button 
               className={this.state.isPeopleActive ? 'Button active people-btn' : 'Button people-btn'} 
@@ -141,6 +150,7 @@ class App extends Component {
             people={this.state.people} 
             planets={this.state.planets} 
             vehicles={this.state.vehicles}
+            favoriteList={this.state.favoriteList}
             activeCategory={this.state.activeCategory} 
             toggleActiveButton={this.toggleActiveButton}
           />

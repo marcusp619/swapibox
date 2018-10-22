@@ -4,7 +4,7 @@ import './Favorite.css'
 
 class Favorite extends Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
       listOpen: false,
     }
@@ -17,8 +17,9 @@ class Favorite extends Component {
   }
 
   render() {
+    const list = this.props.favoriteList.map((card, i) => <li key={Date.now + i}>{card.name}</li>)
     return(
-      <div className='container'>
+      <div onClick={this.props.showFavorites} className='container'>
         <div className='dropdown'>
           <div 
             onClick={this.toggleList} 
@@ -26,14 +27,11 @@ class Favorite extends Component {
           >
             {this.props.title}
           </div>
-          <span className='triangle'>&#9660;</span>
+          <span className='triangle'>{this.props.favoriteList.length}</span>
           <ul  
             className={this.state.listOpen ? 'dropdown-selection active' : 'dropdown-selection'}
           >
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>Fourth</li>
+            { list }
           </ul>
         </div>
       </div>

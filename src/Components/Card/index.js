@@ -80,9 +80,9 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
       </div>
     );
   }
-if (activeCategory === 'Favorites') {
-  return (
-    <div className="card">
+  if (activeCategory === 'Favorites') {
+    return (
+      <div className="card">
         <div className="card-img">     
         </div>
         <div className="card-body">
@@ -104,8 +104,8 @@ if (activeCategory === 'Favorites') {
           />
         </div>
       </div>
-  )
-}  
+    );
+  }
 };
 
 Card.propTypes = {

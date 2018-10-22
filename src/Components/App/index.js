@@ -10,6 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      favoriteList: [],
       film: [],
       people: [],
       planets: [],
@@ -23,7 +24,7 @@ class App extends Component {
 
   async componentDidMount() {
     if (localStorage.length > 0) {
-      this.getAllStorageItems();
+      this.setStateStorageItems();
     } else {
       const planets = await API.fetchPlanetsData();
       const film = await API.fetchFilmData();
@@ -38,7 +39,7 @@ class App extends Component {
     }
   }
     
-  getAllStorageItems = () => {
+  setStateStorageItems = () => {
     const keys = Object.keys(localStorage);
     keys.forEach(item => {
       this.setState({ [item]: JSON.parse(localStorage.getItem(item)) })
@@ -72,15 +73,61 @@ class App extends Component {
     }); 
   }
 
-  
+  getStorageItems = () => {
+    const keys = Object.keys(localStorage);
+    const allItems =  keys.map(item => {
+      return JSON.parse(localStorage.getItem(item));
+    })
+    return allItems;
+  }
+
+  toggleActiveButton = (e) => {
+    // e.preventDefault();
+    e.target.classList.toggle('active-favorite');
+    const searchName = e.target.parentNode.firstChild.textContent;
+
+    const localStorageItems = this.getStorageItems();
+    const searchThrough = {
+      people: localStorageItems[1],
+      planets: localStorageItems[2],
+      vehicles: localStorageItems[3]
+    }
+    const keys = Object.keys(searchThrough);
+    const rawResults = keys.reduce((acc, category) => {
+      const selectedCard = searchThrough[category].find(card => card.name === searchName);
+      acc.push(selectedCard);
+      return acc
+    }, []);
+
+    const cleanedResults = rawResults.reduce((item, card) => {
+      if(card !== undefined) {
+        item.push(card)
+      }
+      return item
+    }, [])
+    
+    this.setState({
+      favoriteList: [...cleanedResults, ...this.state.favoriteList]
+    })
+  }
+
+  showFavorites = () => {
+    this.setState({
+      activeCategory: 'Favorites',
+      isPeopleActive: false,
+      isPlanetsActive: false,
+      isVehiclesActive: false,
+    }); 
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header showFavorites={this.showFavorites} favoriteList={this.state.favoriteList} />
           <div className="Button--container">
             <button 
-              onClick={this.showPeople}
               className={this.state.isPeopleActive ? 'Button active people-btn' : 'Button people-btn'} 
+              onClick={this.showPeople}
             >
               People
             </button>
@@ -98,12 +145,14 @@ class App extends Component {
             </button>
           </div>
         <main>
-          {/* <Movie film={this.state.film.opening_crawl} /> */}
+          <Movie film={this.state.film.opening_crawl} />
           <CardsContainer 
             people={this.state.people} 
             planets={this.state.planets} 
             vehicles={this.state.vehicles}
+            favoriteList={this.state.favoriteList}
             activeCategory={this.state.activeCategory} 
+            toggleActiveButton={this.toggleActiveButton}
           />
         </main>
       </div>

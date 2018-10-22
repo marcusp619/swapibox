@@ -2,13 +2,13 @@
   width: 18rem;
   border: 3px solid grey;
   border-radius: 5px;
-  height: 20rem;
+  height: 28rem;
   margin: 2rem 0;
   position: relative;
 }
 
 .card-img {
-  background: lightblue;
+  background: #B00000;
   height: 40%;
   padding: 5px;
 }
@@ -21,13 +21,24 @@
   padding: 5px;
 }
 
-.card .star {
-  position: absolute;
+.card {
+  position: relative;
   top: 10px;
   right: 10px;
 }
 
-.star {
+.favorite-card {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.active-favorite {
+  color: red;
+  background: black;
+}
+
+/* .star {
   position: relative;
   display: inline-block;
   width: 0;
@@ -38,8 +49,14 @@
   border-right: .3em solid transparent;
   border-bottom: .7em  solid #000;
   border-left: .3em solid transparent;
-  /* Controlls the size of the stars. */
+  
   font-size: 15px;
+}
+
+.active-favorite, active-favorite {
+  border-right: 1em solid transparent;
+  border-bottom: .7em  solid rgb(228, 8, 8);
+  border-left: 1em solid transparent;
 }
 
 .star:before, .star:after {
@@ -57,4 +74,4 @@
 }
 .star:after {
   transform: rotate(35deg);
-}
+} */

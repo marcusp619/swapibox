@@ -24,7 +24,7 @@ class App extends Component {
 
   async componentDidMount() {
     if (localStorage.length > 0) {
-      this.getAllStorageItems();
+      this.setStateStorageItems();
     } else {
       const planets = await API.fetchPlanetsData();
       const film = await API.fetchFilmData();
@@ -39,7 +39,7 @@ class App extends Component {
     }
   }
     
-  getAllStorageItems = () => {
+  setStateStorageItems = () => {
     const keys = Object.keys(localStorage);
     keys.forEach(item => {
       this.setState({ [item]: JSON.parse(localStorage.getItem(item)) })
@@ -73,9 +73,42 @@ class App extends Component {
     }); 
   }
 
-  toggleActiveButton = e => {
-    console.log(e.target.parentNode.firstChild.textContent)
+  getStorageItems = () => {
+    const keys = Object.keys(localStorage);
+    const allItems =  keys.map(item => {
+      return JSON.parse(localStorage.getItem(item));
+    })
+    return allItems;
+  }
+
+  toggleActiveButton = (e) => {
+    e.preventDefault();
     e.target.classList.toggle('active-favorite');
+    const searchName = e.target.parentNode.firstChild.textContent;
+
+    const localStorageItems = this.getStorageItems();
+    const searchThrough = {
+      people: localStorageItems[1],
+      planets: localStorageItems[2],
+      vehicles: localStorageItems[3]
+    }
+    const keys = Object.keys(searchThrough);
+    const rawResults = keys.reduce((acc, category) => {
+      const selectedCard = searchThrough[category].find(card => card.name === searchName);
+      acc.push(selectedCard);
+      return acc
+    }, []);
+
+    const cleanedResults = rawResults.reduce((item, card) => {
+      if(card !== undefined) {
+        item.push(card)
+      }
+      return item
+    }, [])
+    
+    this.setState({
+      favoriteList: [...cleanedResults, ...this.state.favoriteList]
+    })
   }
 
   render() {

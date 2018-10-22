@@ -28,12 +28,12 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
           <h5>{ homeworld }</h5>
           <h5>{ population }</h5>
           <h5>{ species }</h5>
-          <button 
-            className="favorite-card"  
+          <input
+            type="button"
+            className="favorite-card"
             onClick={toggleActiveButton}
-          >
-            Favorite
-          </button>
+            value="Favorite"
+          />
         </div>
       </div>
     );
@@ -49,12 +49,12 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
           <h5>{ population }</h5>
           <h5>{ residents }</h5>
           <h5>{ climate } </h5>
-          <button 
-            className="favorite-card"  
+          <input
+            type="button"
+            className="favorite-card"
             onClick={toggleActiveButton}
-          >
-            Favorite
-          </button>
+            value="Favorite"
+          />
         </div>
       </div>
     );
@@ -69,12 +69,12 @@ const Card = ({ activeCategory, homeworld, name, population, species, terrain, r
           <h5>{ model }</h5>
           <h5>{ passengers }</h5>
           <h5>{ vehicle_class }</h5>
-          <button 
+          <input
+            type="button"
             className="favorite-card"
             onClick={toggleActiveButton}
-          >
-            Favorite
-          </button>
+            value="Favorite"
+          />
         </div>
       </div>
     );

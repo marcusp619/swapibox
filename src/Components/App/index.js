@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import '../Button/Button.css';
-import * as API from '../API/API.js'
+import * as API from '../API/API.js';
 import Header from '../Header/';
-import Movie from  '../Movie/';
+import Movie from '../Movie/';
 import CardsContainer from '../CardsContainer/';
 
 class App extends Component {
@@ -18,8 +18,8 @@ class App extends Component {
       isPeopleActive: false,
       isPlanetsActive: false,
       isVehiclesActive: false,
-      activeCategory: "",
-    }
+      activeCategory: '',
+    };
   }
 
   async componentDidMount() {
@@ -30,21 +30,21 @@ class App extends Component {
       const film = await API.fetchFilmData();
       const people = await API.fetchPeopleData();
       const vehicles = await API.fetchVehiclesData();
-      
-      this.setState({ film, people, planets, vehicles }) 
+
+      this.setState({film, people, planets, vehicles});
       localStorage.setItem('planets', JSON.stringify(planets));
-      localStorage.setItem('film', JSON.stringify(film));    
-      localStorage.setItem('people', JSON.stringify(people));    
-      localStorage.setItem('vehicles', JSON.stringify(vehicles));    
+      localStorage.setItem('film', JSON.stringify(film));
+      localStorage.setItem('people', JSON.stringify(people));
+      localStorage.setItem('vehicles', JSON.stringify(vehicles));
     }
   }
-    
+
   setStateStorageItems = () => {
     const keys = Object.keys(localStorage);
     keys.forEach(item => {
-      this.setState({ [item]: JSON.parse(localStorage.getItem(item)) })
-    })
-  }
+      this.setState({[item]: JSON.parse(localStorage.getItem(item))});
+    });
+  };
 
   showPeople = () => {
     this.setState({
@@ -53,7 +53,7 @@ class App extends Component {
       isPlanetsActive: false,
       isVehiclesActive: false,
     });
-  }
+  };
 
   showPlanets = () => {
     this.setState({
@@ -61,8 +61,8 @@ class App extends Component {
       isPeopleActive: false,
       isPlanetsActive: true,
       isVehiclesActive: false,
-    }); 
-  }
+    });
+  };
 
   showVehicles = () => {
     this.setState({
@@ -70,18 +70,18 @@ class App extends Component {
       isPeopleActive: false,
       isPlanetsActive: false,
       isVehiclesActive: true,
-    }); 
-  }
+    });
+  };
 
   getStorageItems = () => {
     const keys = Object.keys(localStorage);
-    const allItems =  keys.map(item => {
+    const allItems = keys.map(item => {
       return JSON.parse(localStorage.getItem(item));
-    })
+    });
     return allItems;
-  }
+  };
 
-  toggleActiveButton = (e) => {
+  toggleActiveButton = e => {
     // e.preventDefault();
     e.target.classList.toggle('active-favorite');
     const searchName = e.target.parentNode.firstChild.textContent;
@@ -90,26 +90,28 @@ class App extends Component {
     const searchThrough = {
       people: localStorageItems[1],
       planets: localStorageItems[2],
-      vehicles: localStorageItems[3]
-    }
+      vehicles: localStorageItems[3],
+    };
     const keys = Object.keys(searchThrough);
     const rawResults = keys.reduce((acc, category) => {
-      const selectedCard = searchThrough[category].find(card => card.name === searchName);
+      const selectedCard = searchThrough[category].find(
+        card => card.name === searchName,
+      );
       acc.push(selectedCard);
-      return acc
+      return acc;
     }, []);
 
     const cleanedResults = rawResults.reduce((item, card) => {
-      if(card !== undefined) {
-        item.push(card)
+      if (card !== undefined) {
+        item.push(card);
       }
-      return item
-    }, [])
-    
+      return item;
+    }, []);
+
     this.setState({
-      favoriteList: [...cleanedResults, ...this.state.favoriteList]
-    })
-  }
+      favoriteList: [...cleanedResults, ...this.state.favoriteList],
+    });
+  };
 
   showFavorites = () => {
     this.setState({
@@ -117,41 +119,53 @@ class App extends Component {
       isPeopleActive: false,
       isPlanetsActive: false,
       isVehiclesActive: false,
-    }); 
-  }
+    });
+  };
 
   render() {
     return (
       <div className="App">
-        <Header showFavorites={this.showFavorites} favoriteList={this.state.favoriteList} />
-          <div className="Button--container">
-            <button 
-              className={this.state.isPeopleActive ? 'Button active people-btn' : 'Button people-btn'} 
-              onClick={this.showPeople}
-            >
-              People
-            </button>
-            <button 
-              className={this.state.isPlanetsActive ? 'Button active planet-btn' : 'Button planet-btn'} 
-              onClick={this.showPlanets}
-            > 
-              Planets
-            </button>
-            <button 
-              className={this.state.isVehiclesActive ? 'Button active vehicle-btn' : 'Button vehicle-btn'} 
-              onClick={this.showVehicles}
-            > 
-              Vehicles
-            </button>
-          </div>
+        <Header
+          showFavorites={this.showFavorites}
+          favoriteList={this.state.favoriteList}
+        />
+        <div className="Button--container">
+          <button
+            className={
+              this.state.isPeopleActive
+                ? 'Button active people-btn'
+                : 'Button people-btn'
+            }
+            onClick={this.showPeople}>
+            People
+          </button>
+          <button
+            className={
+              this.state.isPlanetsActive
+                ? 'Button active planet-btn'
+                : 'Button planet-btn'
+            }
+            onClick={this.showPlanets}>
+            Planets
+          </button>
+          <button
+            className={
+              this.state.isVehiclesActive
+                ? 'Button active vehicle-btn'
+                : 'Button vehicle-btn'
+            }
+            onClick={this.showVehicles}>
+            Vehicles
+          </button>
+        </div>
         <main>
           <Movie film={this.state.film.opening_crawl} />
-          <CardsContainer 
-            people={this.state.people} 
-            planets={this.state.planets} 
+          <CardsContainer
+            people={this.state.people}
+            planets={this.state.planets}
             vehicles={this.state.vehicles}
             favoriteList={this.state.favoriteList}
-            activeCategory={this.state.activeCategory} 
+            activeCategory={this.state.activeCategory}
             toggleActiveButton={this.toggleActiveButton}
           />
         </main>

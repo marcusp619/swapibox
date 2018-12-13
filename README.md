@@ -11,5 +11,8 @@ For this project, we will be hitting The Star Wars API to tap into a “black ho
 
 *Mark Pearyer*  -- [Github](https://github.com/marcusp619) 
 
+### Screenshots
+![Screenshot]()
+
 ### Project Wireframe
 ![Wireframe Img](https://github.com/marcusp619/swapibox/blob/Update-Readme/SwapiBox-Wireframe%20.png "Logo Title Text 1")

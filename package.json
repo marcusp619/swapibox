@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
     "prop-types": "^15.6.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-scripts": "2.0.4"
   },
   "scripts": {
@@ -30,7 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "enzyme-to-json": "^3.3.4",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
